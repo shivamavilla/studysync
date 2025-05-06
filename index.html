@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="login-container" id="loginContainer">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="/img/study-planner.jpeg" alt="StudySync Logo" class="logo-img">
+        </div>
+
+        <!-- Selection for Admin or Student -->
+        <div class="selection">
+            <div class="role" id="adminRole" onclick="showLoginForm('admin')">
+                <img src="/img/admin.png" alt="Admin Logo" class="role-img">
+                <p>Admin Login</p>
+            </div>
+            <div class="role" id="studentRole" onclick="showLoginForm('student')">
+                <img src="/img/student.png" alt="Student Logo" class="role-img">
+                <p>Student Login</p>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-form">
+            <!-- Admin Login Form -->
+            <div id="adminLogin" class="login-box">
+                <h4>Admin Login</h4>
+                <form id="adminLoginForm">
+                    <input type="email" id="adminEmail" placeholder="Email" required />
+                    <input type="password" id="adminPassword" placeholder="Password" required />
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+
+            <!-- Student Login Form -->
+            <div id="studentLogin" class="login-box">
+                <h4>Student Login</h4>
+                <form id="studentLoginForm">
+                    <input type="email" id="studentEmail" placeholder="Email" required />
+                    <input type="password" id="studentPassword" placeholder="Password" required />
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Section -->
+    <div id="adminDashboard" class="dashboard" style="display: none;">
+        <h2>Admin Dashboard</h2>
+        <h3>Registered Students</h3>
+        <div id="studentsContainer" class="students-list">
+            <!-- Student data will be displayed here -->
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

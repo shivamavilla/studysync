@@ -1,0 +1,165 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Login Container */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo Styling */
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 120px;
+    border-radius: 60px;
+}
+
+/* Selection for Admin and Student */
+.selection {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.role {
+    text-align: center;
+    cursor: pointer;
+}
+
+.role-img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}
+
+.role p {
+    font-weight: bold;
+}
+
+/* Login Box Styling */
+.login-box {
+    display: none; /* Hide both initially */
+    margin-bottom: 20px;
+}
+
+h4 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Input Fields */
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+/* Login Button */
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #3897f0;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0078e4;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* For responsiveness */
+@media (max-width: 500px) {
+    .login-container {
+        width: 90%;
+    }
+}
+
+
+/* Admin Dashboard Styling */
+.dashboard {
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.dashboard h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.students-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.student-card {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s;
+}
+
+.student-card:hover {
+    transform: scale(1.02);
+    background-color: #eef6ff;
+}
+
+
+/* Admin Dashboard - Scrollable student list */
+#studentsContainer {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: scroll; /* Enables scrolling when content exceeds the height */
+    margin-top: 20px;
+}
+
+/* Optional: Styling for the student cards */
+.student-card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
