@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -5,24 +6,25 @@ const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
 // app.use(express.json());
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
 // MySQL connection setup
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT || 3306  // Default to 3306 if no DB_PORT is specified
+const db = mysql.createConnection({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE
 });
 
-connection.connect((err) => {
+db.connect((err) => {
   if (err) {
-      console.error('Error connecting to database:', err);
-      return;
+    console.error(' MySQL connection failed:', err);
+  } else {
+    console.log(' Connected to MySQL');
   }
-  console.log('Connected to the database!');
 });
+
+
 
 app.use(cors());
 app.use(bodyParser.json());
