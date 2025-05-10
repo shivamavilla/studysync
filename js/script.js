@@ -41,7 +41,6 @@ document.getElementById('studentLoginForm').addEventListener('submit', function 
     const email = document.getElementById('studentEmail').value;
     const password = document.getElementById('studentPassword').value;
 
-    // Send the login details to the backend for validation or insertion
     fetch('http://localhost:5001/students/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,7 +50,7 @@ document.getElementById('studentLoginForm').addEventListener('submit', function 
     .then(data => {
         if (data.success) {
             alert("Student Login Successful!");
-            // Optionally, you can display a student's dashboard or details after successful login
+            // Optionally, redirect or show student dashboard
         } else {
             alert('Login failed. Invalid credentials.');
         }
@@ -81,6 +80,7 @@ function fetchStudents() {
                 card.innerHTML = `
                     <p><strong>Email:</strong> ${student.email}</p>
                     <p><strong>Password:</strong> ${student.password}</p>
+                    <button onclick="deleteStudent('${student.email}')">Delete</button>
                 `;
                 container.appendChild(card);
             });
@@ -90,5 +90,46 @@ function fetchStudents() {
         })
         .catch(err => {
             console.error('Error fetching students:', err);
+            alert('Failed to fetch student data.');
         });
+}
+
+// Smooth Scroll (for nav links)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
+
+
+
+
+
+
+
+// Delete student
+function deleteStudent(email) {
+    if (confirm("Are you sure you want to delete this student?")) {
+        fetch(`http://localhost:5001/admin/students/${encodeURIComponent(email)}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Student deleted successfully!');
+                fetchStudents();  // Refresh the student list
+            } else {
+                alert(data.message || 'Failed to delete the student.');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting student:', error);
+            alert('Something went wrong. Please try again.');
+        });
+    }
 }

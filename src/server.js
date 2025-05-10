@@ -103,6 +103,37 @@ app.get('/admin/students', (req, res) => {
   });
 });
 
+
+/** -------------------------------
+ * 👇 4. // DELETE student by email
+ * -------------------------------- */
+
+
+// Delete student route
+app.delete('/admin/students/:email', (req, res) => {
+  const email = req.params.email;
+
+  const query = 'DELETE FROM students WHERE email = ?';
+
+  db.query(query, [email], (err, result) => {
+      if (err) {
+          console.error('Error deleting student:', err);
+          return res.status(500).json({ success: false, message: 'Server error occurred' });
+      }
+
+      if (result.affectedRows === 0) {
+          return res.status(404).json({ success: false, message: 'Student not found' });
+      }
+
+      return res.json({ success: true, message: 'Student deleted successfully' });
+  });
+});
+
+
+
+
+
+
 /** -------------------------------
  * 👇 Start server
  * -------------------------------- */
